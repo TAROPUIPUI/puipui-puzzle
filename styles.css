@@ -1,0 +1,332 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #87CEEB;
+}
+
+#forest-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/IMG_2627.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.tree {
+    position: absolute;
+    background-color: green;
+    transform: rotate(45deg);
+}
+
+.tree-1 {
+    top: 10%;
+    left: 5%;
+    width: 50px;
+    height: 100px;
+}
+
+.tree-2 {
+    top: 30%;
+    right: 15%;
+    width: 70px;
+    height: 150px;
+}
+
+.tree-3 {
+    bottom: 20%;
+    left: 20%;
+    width: 60px;
+    height: 120px;
+}
+
+.tree-4 {
+    bottom: 10%;
+    right: 5%;
+    width: 40px;
+    height: 80px;
+}
+
+.tree-5 {
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 160px;
+}
+
+#game-container {
+    text-align: center;
+    background-color: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 400px;
+    max-height: 95vh;
+    overflow: auto;
+}
+
+#timer-container {
+    position: relative;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 25px;
+    border: 2px solid #4CAF50;
+}
+
+#timer-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #4CAF50;
+    transition: width 1s linear;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+#timer-text {
+    position: relative;
+    z-index: 2;
+    padding: 3px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1em;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+#timer {
+    font-size: 1.2em;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+#stage-info, #goal-info {
+    margin: 5px 0;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 3px;
+    margin: 10px auto;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.block {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.block::before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.block-heart::before {
+    content: '❤️';
+    font-size: 24px;
+}
+
+.block-triangle::before {
+    content: '▲';
+    font-size: 24px;
+}
+
+.block-circle::before {
+    content: '●';
+    font-size: 24px;
+}
+
+.block.cleared {
+    opacity: 0.3;
+}
+
+.block:hover {
+    transform: scale(1.1);
+}
+
+.block.hint-block {
+    filter: brightness(0.6);
+    transition: filter 0.3s ease;
+}
+
+#house {
+    width: 150px;
+    height: 150px;
+    margin: 10px auto;
+    background-size: cover;
+    background-position: center;
+}
+
+.stage-1 { 
+    background-image: url('house-stage-1.png'); 
+}
+.stage-2 { 
+    background-image: url('house-stage-2.png'); 
+}
+.stage-3 { 
+    background-image: url('house-stage-3.png'); 
+}
+.stage-4 { 
+    background-image: url('house-stage-4.png'); 
+}
+.stage-5 { 
+    background-image: url('house-stage-5.png'); 
+}
+
+#start-btn {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+#title-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#title-screen #forest-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/IMG_2627.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.title-container {
+    position: relative;
+    text-align: center;
+    background-color: rgba(255,255,255,0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.title-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#start-game-btn {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin-top: 5px;
+}
+
+#start-game-btn:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#reset-board-btn {
+    display: none;
+}
+
+#reset-info {
+    display: none;
+}
+
+.game-rules {
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.game-rules h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.game-rules p {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.game-rules ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.game-rules li {
+    margin-bottom: 5px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.game-rules li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+}
